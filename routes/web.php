@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\{
     AuthController,
+    ProductController,
+    LocationController,
+    SupplierController,
+    DashboardController
     };
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +26,18 @@ use App\Http\Controllers\{
 
 // Route untuk halaman Home
 Route::get('/', function () {
+    $user = Session::get('user');
+    
+    if ($user) {
+        // Redirect berdasarkan role user
+        if ($user['role'] === 'admin') {
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('user/dashboard');
+        }
+    }
+
+    // Jika user belum login, tampilkan halaman home
     return view('home');
 })->name('home');
 
@@ -55,3 +71,12 @@ Route::get('admin/dashboard', function () {
         return redirect('login');
     }
 })->name('admin.dashboard');
+
+Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+// Resource routes for admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', ProductController::class);
+    Route::resource('locations', LocationController::class);
+    Route::resource('suppliers', SupplierController::class);
+});
