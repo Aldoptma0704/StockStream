@@ -29,7 +29,7 @@
             <select name="location_id" class="form-control" id="location_id" required>
                 <option value="">Select Location</option>
                 @forelse($locations as $location)
-                    <option value="{{ $location->id }}">{{ $location->nama }}</option> <!-- Ubah $location->name menjadi $location->nama -->
+                    <option value="{{ $location->id }}">{{ $location->nama }}</option> 
                 @empty
                     <option value="">No Locations Available</option>
                 @endforelse
