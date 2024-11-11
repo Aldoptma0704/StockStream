@@ -68,8 +68,8 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
+        $product = Product::findOrFail($id);
         $locations = Location::all(); 
-
         return view('admin.products.edit', compact('product', 'locations'));
     }
 

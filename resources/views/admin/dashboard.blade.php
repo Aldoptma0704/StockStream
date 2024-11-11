@@ -26,6 +26,12 @@
             <p>{{ $locationCount }} Total Lokasi</p>
             <a href="{{ route('admin.locations.index') }}">Lihat Lokasi</a>
         </div>
+        <div class="stat-box">
+            <i class="fas fa-map-marker-alt stat-icon"></i>
+            <h2>Permintaan User</h2>
+            <p>{{ $requestCount }} Total Permintaan Produk</p>
+            <a href="{{ route('admin.requests.index') }}">Lihat Permintaan User</a>
+        </div>
     </div>
 
     <div class="actions">

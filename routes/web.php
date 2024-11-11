@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     ProductController,
     LocationController,
     SupplierController,
-    DashboardController
+    DashboardController,
+    RequestController
     };
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +80,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', ProductController::class);
     Route::resource('locations', LocationController::class);
     Route::resource('suppliers', SupplierController::class);
+    Route::resource('requests', RequestController::class);
+    Route::get('requests/{id}/approve', [RequestController::class, 'approve'])->name('requests.approve');
+    Route::get('requests/{id}/reject', [RequestController::class, 'reject'])->name('requests.reject');
 });
+
+// Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
+//     Route::resource('requests', RequestController::class);
+//     Route::get('requests/{id}/approve', [RequestController::class, 'approve'])->name('requests.approve');
+//     Route::get('requests/{id}/reject', [RequestController::class, 'reject'])->name('requests.reject');
+// });
+
