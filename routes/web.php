@@ -8,7 +8,10 @@ use App\Http\Controllers\{
     LocationController,
     SupplierController,
     DashboardController,
-    RequestController
+    RequestController,
+    UserDashboardController,
+    ItemController,
+
     };
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +66,8 @@ Route::get('user/dashboard', function () {
     }
 })->name('user.dashboard');
 
+Route::get('user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+
 // Route dashboard admin
 Route::get('admin/dashboard', function () {
     $user = Session::get('user');
@@ -85,9 +90,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('requests/{id}/reject', [RequestController::class, 'reject'])->name('requests.reject');
 });
 
-// Route::prefix('admin')->name('admin.')->middleware('auth:admin')->group(function () {
-//     Route::resource('requests', RequestController::class);
-//     Route::get('requests/{id}/approve', [RequestController::class, 'approve'])->name('requests.approve');
-//     Route::get('requests/{id}/reject', [RequestController::class, 'reject'])->name('requests.reject');
-// });
+Route::prefix('user')->middleware(['auth'])->group(function () {
+    Route::get('/items/available', [ItemController::class, 'available'])->name('user.items.available');
+    Route::get('/items/borrowed', [ItemController::class, 'borrowed'])->name('user.items.borrowed');
+    Route::get('/requests', [RequestController::class, 'index'])->name('user.requests.index');
+    Route::get('/items/repair', [ItemController::class, 'repair'])->name('user.items.repair');
+});
+
+
 
