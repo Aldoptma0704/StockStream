@@ -26,6 +26,18 @@
             <p>{{ $locationCount }} Total Lokasi</p>
             <a href="{{ route('admin.locations.index') }}">Lihat Lokasi</a>
         </div>
+        <div class="stat-box">
+            <i class="fas fa-tasks stat-icon"></i>
+            <h2>Persetujuan</h2>
+            <p>{{ $borrowRequestCount }} Pengajuan Peminjaman</p>
+            <a href="{{ route('admin.borrowRequests.index') }}">Lihat Pengajuan</a>
+        </div>
+        <div class="stat-box">
+            <i class="fas fa-clipboard-check stat-icon"></i>
+            <h2>Persetujuan Permintaan</h2>
+            <p>{{ $requestItemCount }} Permintaan Barang</p>
+            <a href="{{ route('admin.requestItems.index') }}">Lihat Permintaan</a>
+        </div>
     </div>
 
     <div class="actions">

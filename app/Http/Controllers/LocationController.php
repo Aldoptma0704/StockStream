@@ -52,6 +52,7 @@ class LocationController extends Controller
      */
     public function edit(string $id)
     {
+        $location = Location::findOrFail($id);
         return view('admin.locations.edit', compact('location'));
     }
 

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->text('spesifikasi');
             $table->integer('stok');
-            $table->foreignId('location_id')->constrained('locations');
+            $table->unsignedInteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->timestamps();
         });
     }

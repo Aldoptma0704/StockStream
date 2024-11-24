@@ -98,13 +98,11 @@
 <body>
 
     <nav class="navbar">
-        <a href="{{ route('admin.dashboard') }}" class="logo"><i class="fas fa-cog"></i> Admin Panel</a>
+        <a href="{{ route('user.dashboard') }}" class="logo"><i class="fas fa-cog"></i> User Panel</a>
         <ul>
-            <li><a href="{{ route('admin.products.index') }}"><i class="fas fa-box-open"></i> Produk</a></li>
-            <li><a href="{{ route('admin.locations.index') }}"><i class="fas fa-map-marker-alt"></i> Lokasi</a></li>
+            <li><a href="{{ route('user.availableItems.index') }}"><i class="fas fa-box-open"></i> Barang Tersedia</a></li>
+            <li><a href="{{ route('user.borrowReqs.index') }}"><i class="fas fa-tasks"></i> Pengajuan Pinjam Barang</a></li>
             <li><a href="{{ route('admin.suppliers.index') }}"><i class="fas fa-truck"></i> Supplier</a></li>
-            <li><a href="{{ route('admin.borrowRequests.index') }}"><i class="fas fa-tasks"></i> Permohonan Pinjam Barang</a></li>
-            
         </ul>
         <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
             @csrf
