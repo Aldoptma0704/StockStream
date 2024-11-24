@@ -4,7 +4,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\{
     AuthController,
-    };
+    ProductController,
+    LocationController,
+    SupplierController,
+    DashboardController,
+    AvailableItemController,
+    BorrowReqController,
+    AdminBorrowRequestController,
+    RequestItemController,
+    AdminRequestItemController
+};
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +32,18 @@ use App\Http\Controllers\{
 
 // Route untuk halaman Home
 Route::get('/', function () {
+    $user = Session::get('user');
+    
+    if ($user) {
+        // Redirect berdasarkan role user
+        if ($user['role'] === 'admin') {
+            return redirect('admin/dashboard');
+        } else {
+            return redirect('user/dashboard');
+        }
+    }
+
+    // Jika user belum login, tampilkan halaman home
     return view('home');
 })->name('home');
 
@@ -55,3 +77,34 @@ Route::get('admin/dashboard', function () {
         return redirect('login');
     }
 })->name('admin.dashboard');
+
+Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+
+// Resource routes for admin
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', ProductController::class);
+    Route::resource('locations', LocationController::class);
+    Route::resource('suppliers', SupplierController::class);
+
+    Route::get('borrow-requests', [AdminBorrowRequestController::class, 'index'])->name('borrowRequests.index');
+    Route::post('borrow-requests/{id}/approve', [AdminBorrowRequestController::class, 'approve'])->name('borrowRequests.approve');
+    Route::post('borrow-requests/{id}/reject', [AdminBorrowRequestController::class, 'reject'])->name('borrowRequests.reject');
+
+    Route::get('request-items', [AdminRequestItemController::class, 'index'])->name('requestItems.index');
+    Route::post('request-items/{id}/approve', [AdminRequestItemController::class, 'approve'])->name('requestItems.approve');
+    Route::post('request-items/{id}/reject', [AdminRequestItemController::class, 'reject'])->name('requestItems.reject');
+});
+
+// Route untuk Barang Tersedia
+Route::get('user/items/available', [AvailableItemController::class, 'index'])->name('user.availableItems.index');
+
+Route::get('/borrow-requests', [BorrowReqController::class, 'index'])->name('user.borrowReqs.index');
+Route::get('/borrow-requests/create', [BorrowReqController::class, 'create'])->name('user.borrowReqs.create');
+Route::post('/borrow-requests', [BorrowReqController::class, 'store'])->name('user.borrowReqs.store');
+
+Route::get('user/items/requests', [RequestItemController::class, 'index'])->name('user.requestItems.index');
+Route::get('user/items/requests/create', [RequestItemController::class, 'create'])->name('user.requestItems.create');
+Route::post('user/items/requests', [RequestItemController::class, 'store'])->name('user.requestItems.store');
+
+
+
