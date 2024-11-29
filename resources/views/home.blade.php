@@ -1,76 +1,124 @@
-@extends('layouts.layout')
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
 
-@section('title', 'Home')
+    <!-- Link untuk font Poppins dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Link untuk Animasi -->
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" rel="stylesheet"> 
 
-@section('content')
-<div class="container-fluid p-0">
-    <!-- Section dengan background gambar -->
-    <div class="row justify-content-center align-items-center text-white hero-section" style="height: 70vh;">
-        <div class="col-md-8 text-center">
-            <h1 class="display-4 fw-bold mb-3 animate__animated animate__fadeInDown hero-title">Welcome to StockStream</h1>
-            <p class="lead mb-4 animate__animated animate__fadeInUp hero-description">StockStream adalah sistem manajemen barang elektronik yang dirancang untuk membantu pengguna dalam melacak lokasi barang secara efisien dan mendapatkan informasi detail mengenai produk yang disimpan. Dengan StockStream, pengguna dapat mengetahui secara pasti di mana barang elektronik diletakkan dalam inventaris, memastikan pengelolaan yang lebih baik dan akses informasi yang cepat terkait spesifikasi produk, jumlah stok, dan status ketersediaan.</p>
-            
-            <a href="{{ url('login') }}" class="btn btn-primary btn-md animate__animated animate__pulse animate__infinite">Get Started</a>
-        </div>
-    </div>
-</div>
-@endsection
-
-@section('head')
     <style>
-        /* Gaya untuk gambar latar belakang dan overlay */
+        /* Mengatur font default ke Poppins */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Hero Section */
         .hero-section {
-            background: linear-gradient(to right bottom, rgba(0, 75, 160, 0.7), rgba(0, 123, 255, 0.7)), url('https://source.unsplash.com/1600x900/?electronics,technology') no-repeat center center/cover;
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
-            height: 100vh; /* Atur tinggi section agar sesuai dengan tinggi viewport */
+            position: relative;
+            background: url('{{ asset('images/gudang 1.jpg') }}') no-repeat center center;
+            background-size: cover; /* Gambar akan menutupi seluruh layar */
+            background-position: center center; /* Posisi gambar di tengah */
+            height: 100vh; /* Menggunakan 100% tinggi layar */
+            display: flex;
+            justify-content: flex-start; /* Pastikan konten di sebelah kiri */
+            align-items: center;
+            background-attachment: fixed; /* Efek paralaks: gambar tetap saat scroll */
         }
 
-        /* Efek bayangan pada teks agar lebih menonjol */
+        /* Overlay untuk meningkatkan kontras teks */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Overlay hitam dengan transparansi */
+            z-index: 1;
+        }
+
+        /* Konten di atas overlay */
+        .hero-content {
+            position: relative;
+            z-index: 2; /* Konten di atas overlay */
+            padding: 20px;
+            text-align: left; /* Ubah dari center menjadi left */
+            max-width: 600px; /* Menentukan lebar maksimum konten */
+            color: white;
+        }
+
+        /* Gaya untuk judul */
         .hero-title {
-            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-            font-size: 2.5rem; /* Perkecil sedikit ukuran font */
+            font-size: 4rem;
+            font-weight: 600;
+            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.8); /* Bayangan teks untuk kontras */
+            margin-bottom: 20px;
         }
 
+        /* Gaya untuk deskripsi */
         .hero-description {
-            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
-            font-size: 1.1rem; /* Perkecil sedikit ukuran font */
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.7); /* Bayangan teks untuk deskripsi */
+            margin-bottom: 30px;
         }
 
-        /* Gaya tombol */
-        .btn-primary {
-            background-color: #007bff; /* Warna biru navbar */
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
+        /* Tombol Get Started */
+        .btn-get-started {
+            background-color: #007bff; /* Warna biru untuk tombol */
+            color: white;
+            padding: 12px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        .btn-primary:hover {
-            background-color: #0056b3; /* Biru lebih gelap saat hover */
-            transform: translateY(-2px);
+        .btn-get-started:hover {
+            background-color: #0056b3; /* Warna biru gelap saat hover */
+            transform: translateY(-3px);
         }
 
-        /* Gaya animasi */
+        /* Animasi untuk fade in */
         .animate__fadeInDown, .animate__fadeInUp {
             animation-duration: 1s;
-        }
-
-        .animate__pulse {
-            animation-duration: 1.5s;
         }
 
         /* Responsif untuk layar kecil */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.5rem; /* Ukuran font lebih kecil di perangkat mobile */
             }
+
             .hero-description {
-                font-size: 1rem;
+                font-size: 1.2rem; /* Ukuran font deskripsi lebih kecil di perangkat mobile */
             }
-            .btn-primary {
-                font-size: 0.9rem;
-                padding: 8px 16px;
+
+            .btn-get-started {
+                font-size: 1rem; /* Ukuran font tombol lebih kecil di perangkat mobile */
+                padding: 10px 25px;
             }
         }
     </style>
-@endsection
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title animate__animated animate__fadeInDown">Welcome to StockStream</h1>
+            <p class="hero-description animate__animated animate__fadeInUp">StockStream adalah sistem manajemen barang elektronik yang dirancang untuk membantu pengguna dalam melacak lokasi barang secara efisien dan mendapatkan informasi detail mengenai produk yang disimpan.</p>
+            <!-- Tombol Get Started -->
+            <a href="{{ url('login') }}" class="btn-get-started animate__animated animate__pulse animate__infinite">Get Started</a>
+        </div>
+    </div>
+</body>
+</html>

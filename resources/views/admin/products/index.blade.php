@@ -40,68 +40,81 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table><br>
+        </table>
+
+        <!-- Tombol Back di bawah tabel -->
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back">Kembali</a>
     </div>
-    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px;">Back</a><br><br>
 
     <style>
+        /* Kontainer utama */
         .container {
             margin: 20px auto;
             padding: 20px;
-            max-width: 90%;
+            max-width: 95%;
             background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Judul halaman */
         .page-title {
             margin-bottom: 20px;
             font-size: 28px;
             color: #333;
+            font-weight: bold;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
+        /* Tombol utama */
         .btn {
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 6px;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            font-size: 14px;
+            gap: 8px;
+            font-size: 16px;
             font-weight: bold;
         }
 
+        /* Tombol primer */
         .btn-primary {
-            background-color: #28a745;
+            background-color: #007bff;
             color: white;
         }
 
+        /* Tombol info */
         .btn-info {
             background-color: #17a2b8;
             color: white;
         }
 
+        /* Tombol warning */
         .btn-warning {
             background-color: #ffc107;
             color: black;
         }
 
+        /* Tombol danger */
         .btn-danger {
             background-color: #dc3545;
             color: white;
         }
 
+        /* Efek hover pada tombol */
         .btn:hover {
-            opacity: 0.9;
+            opacity: 0.8;
         }
 
+        /* Styling untuk tabel */
         .table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
         }
 
         .table th, .table td {
@@ -110,22 +123,74 @@
             text-align: left;
         }
 
+        /* Header tabel */
         .table th {
-            background-color: #17a2b8;
+            background-color: #28a745;
             color: white;
             font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
         }
 
+        /* Baris tabel ganjil dan genap */
         .table tr:nth-child(even) {
             background-color: #f8f9fa;
         }
 
+        /* Hover baris tabel */
         .table tr:hover {
-            background-color: #f1f3f5;
+            background-color: #e9ecef;
         }
 
         .table td {
             color: #333;
+            font-size: 15px;
+        }
+
+        /* Tombol aksi di dalam tabel */
+        .table .btn {
+            font-size: 14px;
+            padding: 8px 15px;
+            margin: 0 5px;
+        }
+
+        /* Tombol kembali */
+        .btn-back {
+            font-size: 16px;
+            padding: 12px 25px;
+            text-decoration: none;
+            background-color: #6c757d;
+            color: white;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+
+        /* Responsif untuk layar kecil */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 24px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .table th, .table td {
+                padding: 10px;
+            }
+
+            .btn-back {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 

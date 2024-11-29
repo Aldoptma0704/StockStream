@@ -7,6 +7,7 @@
     <h1>Selamat Datang, Admin!</h1>
     <p class="intro">Kelola situs web Anda dengan mudah dan efisien melalui dashboard ini.</p>
     
+    <!-- Statistik Grid -->
     <div class="stats-grid">
         <div class="stat-box">
             <i class="fas fa-box-open stat-icon"></i>
@@ -40,6 +41,7 @@
         </div>
     </div>
 
+    <!-- Aksi Cepat -->
     <div class="actions">
         <h2>Aksi Cepat</h2>
         <p>Gunakan tombol di bawah untuk melakukan aksi cepat seperti menambahkan produk, supplier, atau lokasi baru.</p>
@@ -57,53 +59,73 @@
     </div>
 </div>
 
+<!-- Custom Styles -->
 <style>
     .dashboard {
-        font-family: Arial, sans-serif;
-        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 30px;
+        color: #333;
     }
     .intro {
         margin-bottom: 20px;
-        color: #555;
+        color: #666;
+        font-size: 20px; 
     }
     .stats-grid {
         display: flex;
         gap: 20px;
-        margin-bottom: 30px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
     .stat-box {
         flex: 1;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        min-width: 250px;
+        padding: 30px;
+        border-radius: 12px;
         text-align: center;
-        background-color: #f9f9f9;
-        position: relative;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        
     }
     .stat-icon {
-        font-size: 40px;
+        font-size: 60px; 
         color: #007bff;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
     .stat-box h2 {
+        font-size: 26px; 
         margin-bottom: 10px;
+        color: #333;
+    }
+    .stat-box p {
+        font-size: 18px;
+        color: #555;
     }
     .stat-box a {
         display: inline-block;
-        margin-top: 10px;
+        margin-top: 15px;
         text-decoration: none;
         color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+    .stat-box a:hover {
+        color: #0056b3;
     }
     .actions {
-        margin-top: 30px;
+        margin-top: 40px;
     }
     .actions-grid {
         display: flex;
         gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .action-button {
         flex: 1;
-        padding: 15px 20px;
+        min-width: 180px;
+        padding: 20px;
         text-align: center;
         border: none;
         border-radius: 8px;
@@ -114,14 +136,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
-        font-size: 16px;
-    }
-    .action-button i {
-        font-size: 20px;
+        gap: 15px;
+        font-size: 18px; 
     }
     .action-button:hover {
         background-color: #0056b3;
+    }
+    .action-button i {
+        font-size: 24px;
     }
 </style>
 

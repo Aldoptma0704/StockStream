@@ -37,37 +37,42 @@
             </tbody>
         </table>
     </div>
-    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px;">Back</a><br><br>
+
+    <!-- Tombol Kembali -->
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back">Kembali</a><br><br>
 
     <style>
         .container {
             margin: 20px auto;
-            padding: 20px;
-            max-width: 80%;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 90%;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .page-title {
             margin-bottom: 20px;
-            font-size: 28px;
+            font-size: 32px;
             color: #333;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .btn {
-            padding: 10px 15px;
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
             text-align: center;
             cursor: pointer;
             margin-bottom: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s ease;
         }
 
         .btn-primary {
@@ -86,32 +91,73 @@
         }
 
         .btn:hover {
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 30px;
+            font-size: 14px;
         }
 
         .table th, .table td {
             border: 1px solid #ddd;
-            padding: 10px;
+            padding: 14px 20px;
             text-align: left;
         }
 
         .table th {
             background-color: #007bff;
             color: white;
+            font-weight: bold;
+            text-align: center;
         }
 
         .table tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #f9f9f9;
         }
 
         .table tr:hover {
-            background-color: #ddd;
+            background-color: #f1f1f1;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+
+        /* Styling for the Back button */
+        .btn-back {
+            font-size: 16px;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: center;
+            width: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .btn-back {
+                width: 100%;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 15px;
+            }
+
+            .table th, .table td {
+                font-size: 12px;
+                padding: 10px;
+            }
         }
     </style>
 
