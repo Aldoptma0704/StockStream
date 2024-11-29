@@ -12,7 +12,8 @@ use App\Http\Controllers\{
     BorrowReqController,
     AdminBorrowRequestController,
     RequestItemController,
-    AdminRequestItemController
+    AdminRequestItemController,
+    UserDashboardController
 };
 
 /*
@@ -67,6 +68,8 @@ Route::get('user/dashboard', function () {
         return redirect('login');
     }
 })->name('user.dashboard');
+
+Route::get('user/dashboard', [UserDashboardController::class, 'dashboard'])->name('user.dashboard');
 
 // Route dashboard admin
 Route::get('admin/dashboard', function () {

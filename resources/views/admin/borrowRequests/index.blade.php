@@ -65,6 +65,7 @@
             @endforelse
         </tbody>
     </table>
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px; padding: 10px 20px; border:none; color:#fff; text-decoration:none; border-radius: 5px; background-color:#007bff;">Back</a><br><br>
 </div>
 
 <style>
