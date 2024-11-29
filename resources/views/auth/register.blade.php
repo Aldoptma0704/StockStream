@@ -9,13 +9,12 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-6">
-    <!-- Card untuk Form Login -->
-    <div class="card">
-        <div class="card-body">
-            
-                <h2 class="text-center">Register</h2>
-                
+    <div class="col-md-8 d-flex">
+        <!-- Card untuk Form Register dengan lebar lebih besar -->
+        <div class="card w-75" style="min-height: 50vh;">
+            <div class="card-body d-flex flex-column justify-content-center">
+                <h2 class="card-title text-center">Register</h2>
+
                 @if($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -67,9 +66,17 @@
                     </div>
 
                     <!-- Tombol Register -->
-                    <button type="submit" class="btn btn-primary w-100">Register</button>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
                 </form>
             </div>
+        </div>
+
+        <!-- Tempat Gambar di Sebelah Kanan -->
+        <div class="w-50 d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+            <!-- Menggunakan helper asset() untuk mengambil gambar dari folder public -->
+            <img src="{{ asset('images/gudang 2.jpg') }}" alt="Register Image" class="img-fluid" style="object-fit: cover; height: 100%; width: 100%;"/>
         </div>
     </div>
 </div>

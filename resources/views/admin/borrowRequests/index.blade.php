@@ -65,10 +65,13 @@
             @endforelse
         </tbody>
     </table>
-    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px; padding: 10px 20px; border:none; color:#fff; text-decoration:none; border-radius: 5px; background-color:#007bff;">Back</a><br><br>
+
+    <!-- Tombol Kembali di bawah tabel -->
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back">Kembali</a><br><br>
 </div>
 
 <style>
+    /* Kontainer utama */
     .container {
         background-color: #f9f9f9;
         padding: 20px;
@@ -180,5 +183,33 @@
         color: #155724;
         border-color: #c3e6cb;
     }
+
+    /* Tombol kembali */
+    .btn-back {
+        font-size: 16px;
+        padding: 12px 25px;
+        text-decoration: none;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 8px;
+        margin-top: 20px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-back:hover {
+        background-color: #5a6268;
+    }
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 768px) {
+        .btn-back {
+            width: 100%;
+        }
+    }
 </style>
+
+<!-- Include Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 @endsection

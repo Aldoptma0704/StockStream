@@ -9,10 +9,10 @@
 
 @section('content')
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <!-- Card untuk Form Login -->
-        <div class="card">
-            <div class="card-body">
+    <div class="col-md-8 d-flex">
+        <!-- Card untuk Form Login dengan lebar lebih besar -->
+        <div class="card w-75" style="min-height: 50vh;">
+            <div class="card-body d-flex flex-column justify-content-center">
                 <h2 class="card-title text-center">Login</h2>
 
                 @if($errors->any())
@@ -54,6 +54,13 @@
                 </form>
             </div>
         </div>
+
+        <!-- Tempat Gambar di Sebelah Kanan -->
+        <div class="w-50 d-flex align-items-center justify-content-center" style="min-height: 50vh;">
+            <!-- Menggunakan helper asset() untuk mengambil gambar dari folder public -->
+            <img src="{{ asset('images/gudang 2.jpg') }}" alt="Login Image" class="img-fluid" style="object-fit: cover; width: 100%; height: auto;"/>
+        </div>
     </div>
 </div>
+
 @endsection
