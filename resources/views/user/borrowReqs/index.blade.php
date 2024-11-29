@@ -49,7 +49,9 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table><br>
+
+        <a href="{{ route('user.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px;">Back</a><br>
     @endif
 </div>
 
@@ -57,6 +59,12 @@
     .borrow-requests {
         padding: 20px;
     }
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
     .table {
         width: 100%;
         border-collapse: collapse;
@@ -70,7 +78,7 @@
         text-align: left;
     }
     th {
-        background-color: #f4f4f4;
+        background-color: #007bff;
     }
     .badge {
         padding: 5px 10px;

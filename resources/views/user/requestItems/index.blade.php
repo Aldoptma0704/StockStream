@@ -10,7 +10,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <a href="{{ route('user.requestItems.create') }}" class="btn btn-primary mb-4">Buat Permintaan Barang</a>
+    <a href="{{ route('user.requestItems.create') }}" class="btn btn-primary" style="float: right; margin-bottom: 10px; ">Buat Permintaan Barang</a>
 
     <table class="table table-bordered">
         <thead>
@@ -45,7 +45,8 @@
                 </tr>
             @endforelse
         </tbody>
-    </table>
+    </table><br>
+    <a href="{{ route('user.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px;">Back</a><br>
 </div>
 
 <style>
@@ -75,6 +76,7 @@
         text-decoration: none;
         font-weight: bold;
         transition: background-color 0.3s;
+
     }
 
     .btn-primary:hover {

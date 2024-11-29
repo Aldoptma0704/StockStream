@@ -4,6 +4,7 @@
 
 @section('content')
 <div class="available-items">
+    <a href="{{ route('user.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px; text-decoration:none; padding: 10px 20px; border-radius:10px; background-color: #007bff; border: none; color: #fff;">Back</a><br>
     <h1>Barang Tersedia</h1>
 
     @if ($products->isEmpty())
@@ -41,6 +42,11 @@
         padding: 20px;
         font-family: Arial, sans-serif;
     }
+
+    h1{
+        text-align:center;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;

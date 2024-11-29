@@ -37,6 +37,7 @@
             </tbody>
         </table>
     </div>
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px;">Back</a><br><br>
 
     <style>
         .container {

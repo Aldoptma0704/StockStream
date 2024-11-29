@@ -102,7 +102,7 @@
         <ul>
             <li><a href="{{ route('user.availableItems.index') }}"><i class="fas fa-box-open"></i> Barang Tersedia</a></li>
             <li><a href="{{ route('user.borrowReqs.index') }}"><i class="fas fa-tasks"></i> Pengajuan Pinjam Barang</a></li>
-            <li><a href="{{ route('admin.suppliers.index') }}"><i class="fas fa-truck"></i> Supplier</a></li>
+            <li><a href="{{ route('user.requestItems.index') }}"><i class="fas fa-tasks"></i> Pengajuan yang Diminta</a></li>
         </ul>
         <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
             @csrf

@@ -28,7 +28,7 @@
         </div>
         <div class="stat-box">
             <i class="fas fa-tasks stat-icon"></i>
-            <h2>Persetujuan</h2>
+            <h2>Persetujuan Peminjaman</h2>
             <p>{{ $borrowRequestCount }} Pengajuan Peminjaman</p>
             <a href="{{ route('admin.borrowRequests.index') }}">Lihat Pengajuan</a>
         </div>

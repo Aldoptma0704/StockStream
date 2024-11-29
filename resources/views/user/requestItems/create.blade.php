@@ -3,7 +3,10 @@
 @section('title', 'Buat Permintaan Barang')
 
 @section('content')
+<a href="{{ route('user.dashboard') }}" class="btn btn-back">Back</a><br>
+
 <div class="container">
+
     <h1 class="mt-4 mb-4">Buat Permintaan Barang</h1>
 
     <form action="{{ route('user.requestItems.store') }}" method="POST">
@@ -25,6 +28,15 @@
 </div>
 
 <style>
+    .btn-back{
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
     .container {
         font-family: Arial, sans-serif;
         max-width: 600px;

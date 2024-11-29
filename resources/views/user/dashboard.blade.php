@@ -5,7 +5,7 @@
 @section('content')
 <div class="dashboard">
     <h1>Selamat Datang, {{Session::get('user')['name']}}!</h1>
-    <p class="intro">Kelola situs web Anda dengan mudah dan efisien melalui dashboard ini.</p>
+    <p class="intro">Tampilan dashboard yang sederhana dan ringkas membuat anda lebih nyaman menggunakannya.</p>
     
     <div class="stats-grid">
         <div class="stat-box">
@@ -17,7 +17,7 @@
         <div class="stat-box">
             <i class="fas fa-truck stat-icon"></i>
             <h2>Barang Pinjaman</h2>
-            <p>{{ $borrowedItemsCount ?? 0 }} Total Barang Pinjam</p>
+            <p>{{ $borrowedItemsCount ?? 0 }} Total Barang Ingin Dipinjam</p>
             <a href="{{ route('user.borrowReqs.index') }}">Lihat Status Barang Pinjaman</a>
         </div>
         <div class="stat-box">
@@ -26,7 +26,19 @@
             <p>{{ $requestItemCount ?? 0 }} Total Barang Diminta</p>
             <a href="{{ route('user.requestItems.index') }}">Lihat Barang yang Diminta</a>
         </div>
+    </div>
 
+    <div class="actions">
+        <h2>Aksi Cepat</h2>
+        <p>Gunakan tombol di bawah untuk melakukan aksi cepat seperti menambahkan produk, supplier, atau lokasi baru.</p>
+        <div class="actions-grid">
+            <a href="{{ route('user.borrowReqs.create') }}" class="action-button">
+                <i class="fas fa-plus-circle"></i> Ajukan Perminjaman Barang
+            </a>
+            <a href="{{ route('user.requestItems.create') }}" class="action-button">
+                <i class="fas fa-plus-circle"></i> Ajukan Permintaan Barang
+            </a>
+        </div>
     </div>
 
 </div>
