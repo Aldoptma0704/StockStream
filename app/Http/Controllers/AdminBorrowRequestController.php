@@ -19,8 +19,21 @@ class AdminBorrowRequestController extends Controller
     public function approve($id)
     {
         $borrowRequest = BorrowReq::findOrFail($id);
-        $borrowRequest->status = 'approved';
-        $borrowRequest->save();
+        // Pastikan status request masih pending
+        if ($borrowRequest->status == 'pending') {
+            // Ambil produk terkait
+            $product = $borrowRequest->product;
+            
+            // Periksa apakah stok cukup sebelum approve
+            if ($product->stok > 0) {
+                // Panggil method approve() dari model RequestItem
+                $borrowRequest->approve();
+
+                return redirect()->route('admin.borrowRequests.index')->with('success', 'Permintaan barang disetujui dan stok produk diperbarui.');
+            } else {
+                return redirect()->route('admin.borrowRequests.index')->with('error', 'Stok produk tidak cukup.');
+            }
+        }   
 
         return redirect()->back()->with('success', 'Pengajuan berhasil disetujui.');
     }

@@ -17,7 +17,6 @@
             <tr>
                 <th>No</th>
                 <th>Nama Barang</th>
-                <th>Jumlah</th>
                 <th>Alasan</th>
                 <th>Status</th>
             </tr>
@@ -26,8 +25,7 @@
             @forelse ($requests as $index => $request)
                 <tr>
                     <td>{{ $index + 1 }}</td>
-                    <td>{{ $request->nama_barang }}</td>
-                    <td>{{ $request->jumlah }}</td>
+                    <td>{{ $request->product->nama }}</td>
                     <td>{{ $request->alasan }}</td>
                     <td>
                         @if ($request->status == 'pending')

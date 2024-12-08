@@ -12,12 +12,13 @@
     <form action="{{ route('user.requestItems.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="nama_barang">Nama Barang</label>
-            <input type="text" class="form-control" id="nama_barang" name="nama_barang" required>
-        </div>
-        <div class="form-group">
-            <label for="jumlah">Jumlah</label>
-            <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" required>
+            <label for="product_id">Nama Barang</label>
+            <select name="product_id" id="product_id" class="form-control" required>
+                <option value="" disabled selected>Pilih Barang</option>
+                @foreach ($products as $product)
+                    <option value="{{ $product->id }}">{{ $product->nama }} (Stok: {{ $product->stok }})</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label for="alasan">Alasan</label>

@@ -15,7 +15,6 @@
                 <th>No</th>
                 <th>Nama User</th>
                 <th>Nama Barang</th>
-                <th>Jumlah</th>
                 <th>Alasan</th>
                 <th>Status</th>
                 <th>Aksi</th>
@@ -26,8 +25,7 @@
                 <tr>
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $request->user->name }}</td>
-                    <td>{{ $request->nama_barang }}</td>
-                    <td>{{ $request->jumlah }}</td>
+                    <td>{{ $request->product->nama }}</td>
                     <td>{{ $request->alasan }}</td>
                     <td>
                         @if($request->status == 'pending')
@@ -57,14 +55,14 @@
         </tbody>
     </table>
 </div><br>
-<a href="{{ route('admin.dashboard') }}" class="btn btn-primary" style="float: left; margin-bottom: 10px; padding: 10px 20px; border:none; color:#fff; text-decoration:none; border-radius: 5px; background-color:#007bff;">Back</a><br><br>
+<a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back" >Kembali</a><br><br>
 
 <style>
     body {
         font-family: Arial, sans-serif;
         background-color: #f8f9fa;
         margin: 0;
-        padding: 0;
+        padding: 0
     }
 
     .container {
@@ -161,6 +159,18 @@
 
     .btn-secondary:hover {
         background-color: #5a6268;
+    }
+
+    .btn-back {
+        font-size: 16px;
+        padding: 12px 25px;
+        text-decoration: none;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 8px;
+        margin-top: 20px;
+        display: block;
+        text-align: center;
     }
 
     .alert {

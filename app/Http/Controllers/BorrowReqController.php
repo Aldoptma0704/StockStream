@@ -40,8 +40,6 @@ class BorrowReqController extends Controller
      */
     public function store(Request $request)
     {
-
-        \Log::info('Data request:', $request->all());
         
         $request->validate([
             'product_id' => 'required|exists:products,id',
@@ -55,9 +53,6 @@ class BorrowReqController extends Controller
         if (!$product || $product->stok <= 0) {
             return back()->withErrors(['product_id' => 'Stok barang tidak mencukupi.']);
         }
-
-        // Kurangi stok produk
-        $product->decrement('stok');
 
         // Simpan pengajuan peminjaman ke database
         BorrowReq::create([

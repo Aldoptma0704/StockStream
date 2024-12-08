@@ -15,8 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('nama_barang');
-            $table->integer('jumlah');
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->string('alasan');
             $table->string('status')->default('pending'); // pending/approved/rejected
             $table->timestamps();

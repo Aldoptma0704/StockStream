@@ -153,7 +153,6 @@
             border-radius: 8px;
             margin-top: 20px;
             display: block;
-            width: 100%;
             text-align: center;
         }
 

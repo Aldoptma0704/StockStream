@@ -36,10 +36,10 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 
-    <!-- Tombol Kembali -->
-    <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back">Kembali</a><br><br>
+            <!-- Tombol Kembali -->
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-back">Back</a><br>
+    </div>
 
     <style>
         .container {
@@ -61,18 +61,13 @@
         }
 
         .btn {
-            padding: 12px 20px;
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
             text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
+            display: inline-block;
             cursor: pointer;
-            margin-bottom: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s ease;
         }
 
         .btn-primary {
@@ -130,13 +125,13 @@
         .btn-back {
             font-size: 16px;
             padding: 12px 25px;
-            background-color: #007bff;
+            text-decoration: none;
+            background-color: #6c757d;
             color: white;
             border-radius: 8px;
-            display: inline-block;
+            margin-top: 20px;
+            display: block;
             text-align: center;
-            width: auto;
-            transition: background-color 0.3s ease;
         }
 
         .btn-back:hover {
@@ -145,14 +140,6 @@
 
         /* Responsive styling */
         @media (max-width: 768px) {
-            .btn-back {
-                width: 100%;
-            }
-
-            .btn {
-                font-size: 14px;
-                padding: 10px 15px;
-            }
 
             .table th, .table td {
                 font-size: 12px;

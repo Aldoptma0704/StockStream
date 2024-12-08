@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RequestItem;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -16,7 +17,10 @@ class RequestItemController extends Controller
     {
         $userId = Session::get('user')['id'];
 
-        $requests = RequestItem::where('user_id', $userId)->get();
+        $requests = RequestItem::with('product')
+        ->where('user_id', $userId)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
         return view('user.requestItems.index', compact('requests'));
     }
@@ -26,7 +30,8 @@ class RequestItemController extends Controller
      */
     public function create()
     {
-        return view('user.requestItems.create');
+        $products = Product::where('stok', '>', 0)->get();
+        return view('user.requestItems.create', compact('products'));
     }
 
     /**
@@ -34,24 +39,28 @@ class RequestItemController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
-            'nama_barang' => 'required|string|max:255',
-            'jumlah' => 'required|integer|min:1',
+            'product_id' => 'required|exists:products,id',
             'alasan' => 'required|string|max:255',
         ]);
-
+    
+        // Periksa stok produk
+        $product = Product::find($request->product_id);
+        if (!$product || $product->stok <= 0) {
+            return back()->withErrors(['product_id' => 'Stok barang tidak mencukupi.']);
+        }
+    
         // Simpan permintaan barang ke database
         RequestItem::create([
             'user_id' => Session::get('user')['id'],
-            'nama_barang' => $request->nama_barang,
-            'jumlah' => $request->jumlah,
+            'product_id' => $request->product_id,
             'alasan' => $request->alasan,
             'status' => 'pending', // Default status
         ]);
-
+    
         return redirect()->route('user.requestItems.index')->with('success', 'Permintaan barang berhasil diajukan.');
     }
+    
 
     /**
      * Display the specified resource.

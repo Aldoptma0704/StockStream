@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\RequestItem;
+use App\Models\Product;
 
 class AdminRequestItemController extends Controller
 {
@@ -19,10 +20,26 @@ class AdminRequestItemController extends Controller
     public function approve($id)
     {
         $requestItem = RequestItem::findOrFail($id);
-        $requestItem->update(['status' => 'approved']);
+        
+        // Pastikan status request masih pending
+        if ($requestItem->status == 'pending') {
+            // Ambil produk terkait
+            $product = $requestItem->product;
+            
+            // Periksa apakah stok cukup sebelum approve
+            if ($product->stok > 0) {
+                // Panggil method approve() dari model RequestItem
+                $requestItem->approve();
 
-        return redirect()->route('admin.requestItems.index')->with('success', 'Permintaan barang disetujui.');
+                return redirect()->route('admin.requestItems.index')->with('success', 'Permintaan barang disetujui dan stok produk diperbarui.');
+            } else {
+                return redirect()->route('admin.requestItems.index')->with('error', 'Stok produk tidak cukup.');
+            }
+        }   
+
+        return redirect()->route('admin.requestItems.index')->with('error', 'Permintaan ini sudah diproses.');
     }
+    
 
     /**
      * Tolak permintaan barang.
@@ -30,10 +47,14 @@ class AdminRequestItemController extends Controller
     public function reject($id)
     {
         $requestItem = RequestItem::findOrFail($id);
+        
+        // Ubah status request menjadi 'rejected' tanpa mempengaruhi stok produk
         $requestItem->update(['status' => 'rejected']);
-
+        $requestItem->save();
+    
         return redirect()->route('admin.requestItems.index')->with('success', 'Permintaan barang ditolak.');
     }
+    
 
     /**
      * Show the form for creating a new resource.

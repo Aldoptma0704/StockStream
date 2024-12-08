@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class BorrowReq extends Model
 {
@@ -50,12 +51,20 @@ class BorrowReq extends Model
         }
     }
 
+    public function decrementStok()
+    {
+        $this->product->decrement('stok', 1);
+    }
+
     public function approve()
     {
-        $this->update(['status' => 'approved']);
+        if ($this->status === 'pending') {
+            $this->status = 'approved';
+            $this->save();
 
-        // Kurangi stok produk
-        $this->product->decrement('stok', 1);
+            // Kurangi stok barang yang diminta
+            $this->decrementStok();
+        }
     }
 
     public function reject()

@@ -70,7 +70,7 @@
 
         /* Tombol utama */
         .btn {
-            padding: 12px 20px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 6px;
             display: inline-flex;
@@ -157,14 +157,14 @@
         /* Tombol kembali */
         .btn-back {
             font-size: 16px;
-            padding: 12px 25px;
+            padding: 10px 20px;
             text-decoration: none;
             background-color: #6c757d;
             color: white;
             border-radius: 8px;
             margin-top: 20px;
             display: block;
-            width: 100%;
+            width: 97%;
             text-align: center;
         }
 
